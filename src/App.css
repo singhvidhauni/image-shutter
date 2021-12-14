@@ -1,7 +1,11 @@
 .App {
   text-align: center;
 }
-
+h1 {
+  font-family: 'Puppies Play', cursive;
+  font-size: 72px;
+  color:#61dafb;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -25,7 +29,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #0ccac4;
 }
 
 @keyframes App-logo-spin {

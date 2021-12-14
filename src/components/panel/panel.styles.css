@@ -1,0 +1,18 @@
+.panel-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #dddafb;
+    border: 1px solid fdfafa;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+  }
+  
+  .panel-container:hover {
+    transform: scale(1.05);
+  }
+  

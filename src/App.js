@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {SearchBox} from './components/search-box/search-box.component';
+import {PanelList} from './components/panel-list/panel-list.component';
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      photos: [],
+      searchField: ''
+    }
+  }
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/photos')
+      .then(response => response.json())
+      .then(users => this.setState({ photos:users }));
+  }
+  handleChange = (e) => {
+    this.setState({searchField:e.target.value})
+  }
+  render() {
+    const {photos, searchField} = this.state;
+    const filteredphotos = photos.filter(photo => photo.id.toString().toLowerCase().includes(searchField));
+    return (
+      <div className="App">
+          <h1>PhotoSearch</h1>
+          <SearchBox placeholder="Search Photo by ID" handleChange={this.handleChange}/>
+          <PanelList photos={filteredphotos} />
+      </div>
+    );
+  }
 }
 
 export default App;
